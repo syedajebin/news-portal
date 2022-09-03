@@ -1,4 +1,4 @@
-.newspaper {
+.headdline {
     color: red;
     font-weight: bold;
 }
@@ -6,12 +6,12 @@
 
 .category ul li a:focus {
 
-    border-radius: 3px;
-    background-color:tomato;
+    border-radius: 5px;
+    background-color: rgb(130, 130, 234);
 }
 
 
-#author-photos {
+#author-images {
     width: 40px;
     height: 40px;
 }

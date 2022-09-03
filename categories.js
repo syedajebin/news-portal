@@ -1,3 +1,4 @@
+
 const loadCategoryItem = async () => {
     const url = ' https://openapi.programming-hero.com/api/news/categories'
 
@@ -83,10 +84,10 @@ const showCategoryByID = (data) => {
     const cardFoundNumber = document.getElementById("card");
     const length = data.data.length
     if (length > 0) {
-        cardFoundNumber.innerText = `Got  ${length}  items found`;
+        cardFoundNumber.innerText = `${length} items found `;
     }
     else if (length === 0) {
-        cardFoundNumber.innerText = " No items found";
+        cardFoundNumber.innerText = "Sorry!! No Items Found!!!";
         Spiner(false);
     }
 
@@ -94,7 +95,7 @@ const showCategoryByID = (data) => {
 
     const parentRows = document.getElementById("parent-row");
 
-    parentRows.textContent = '';
+    parentRows.innerText = '';
 
 
     const sortedData = data.data.sort((x, y) => {
@@ -111,7 +112,7 @@ const showCategoryByID = (data) => {
         div.classList.add("col");
 
         div.innerHTML = `
-        <div class="row gx-0 shadow" id="added-card-row" onclick="ModalGenerate('${item._id}')" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+        <div class="row gx-0 shadow" id="added-card-row" >
         <div class="col-lg-4 col-md-4 col-sm-12 dynamic-card-img">
             <img src="${item.thumbnail_url
             }" class="img-fluid p-3 d-block" class="card-imgs ">
@@ -127,7 +128,7 @@ const showCategoryByID = (data) => {
                 <div class="d-flex align-items-center h-100 justify-content-evenly">
                     <div class="d-flex">
                     <div class="author-image">
-                    <img src="${item.author.img}" id="author-photos" class="d-block  rounded-circle">
+                    <img src="${item.author.img}" id="author-images" class="d-block  rounded-circle">
                     </div>
                     <div class="author-writter-date ps-3">                
                      <p class="mb-0">${item.author.name ? item.author.name : "N/A"}</p>
@@ -160,7 +161,7 @@ const showCategoryByID = (data) => {
                     <i class="fa-solid fa-star"></i>
                 </span>
             </div>
-            <div class="arrow-icon-center">
+            <div class="arrow-icon-center"  onclick="GeneratingModal('${item._id}')" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <span class="d-inline-block">
                     <i class="fa-solid fa-arrow-right text-danger fw-bold" style="cursor: pointer;"></i>
                 </span>
@@ -192,12 +193,92 @@ const showCategoryByID = (data) => {
 
 }
 
+const generatingModalCardByid = async (category_id) => {
+
+    const url = ` https://openapi.programming-hero.com/api/news/${category_id}`;
 
 
 
 
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => showingModalCard(data))
+        .catch((error) => {
+            console.log('Error Meassage:', error);
+        })
+}
+
+const showingModalCard = (data) => {
 
 
+    const modalBody = document.getElementById("modal-body");
+    modalBody.innerHTML = '';
+
+    const div = document.createElement("div");
+    div.classList.add(".card");
+
+    div.innerHTML = `
+    <h3 class="mb-2">${data.data[0].title}</h3>
+    <img src="${data.data[0].image_url}" class="img-fluid">
+    <p>${data.data[0].details ? data.data[0].details.slice(0, 400) : ''}</p>
+
+    <div class="author d-flex align-items-center">
+    <div class="author-image">
+        <img src="${data.data[0].author.img}" id="author-images" class="d-block  rounded-circle">
+    </div>
+   <div class="author-writter-date ps-3">
+    <p class="mb-0 fw-bold">${data.data[0].author.name ? data.data[0].author.name : "N/A"}</p>
+    <small>${data.data[0].author.published_date ? data.data[0].author.published_date : "not found"}</small>
+   </div>
+   </div>
+
+    <div class="d-flex justify-content-between mt-2">
+    
+    <div class="view  d-flex align-items-center h-100">
+    <div class=" d-flex h-50 justify-content-center align-items-center" id="view-icon">
+    <p class="me-1"><i class="fa-regular fa-eye"></i></p>
+    <p class="ms-1 fw-bold">${data.data[0].total_view ? data.data[0].total_view : "No View"
+        }</p>
+    </div>
+    </div>
+    
+    <div class="rating d-flex align-items-center h-100 ">
+                   <div class="rating-center">
+                    <span class="d-inline-block">
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                    </span>
+                    <span class="d-inline-block">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span class="d-inline-block">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span class="d-inline-block">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                    <span class="d-inline-block">
+                        <i class="fa-solid fa-star"></i>
+                    </span>
+                   </div>
+                </div>
+    
+    </div>
+
+    `
+    modalBody.appendChild(div);
+}
+
+
+
+const GeneratingModal = (id) => {
+
+
+    generatingModalCardByid(id);
+
+
+
+
+}
 
 
 
