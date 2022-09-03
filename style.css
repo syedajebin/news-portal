@@ -1,0 +1,48 @@
+.headdline {
+    color: red;
+    font-weight: bold;
+}
+
+
+.category ul li a:focus {
+
+    border-radius: 5px;
+    background-color: rgb(130, 130, 234);
+}
+
+
+#author-images {
+    width: 40px;
+    height: 40px;
+}
+
+.index-file-news {
+    font-size: 20px !important;
+    color: red;
+}
+
+@media (max-width: 575.98px) {
+    .card-imgs {
+        width: 100% !important;
+
+    }
+
+    .dynamic-card-img {
+        display: flex;
+        justify-content: center;
+    }
+
+    #card-footer-row {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .col-3s {
+        width: 100%;
+    }
+
+    .cols-inline {
+        display: inline;
+    }
+
+}
