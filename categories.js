@@ -39,3 +39,5 @@ const displayCategoriesItem = (item) => {
     })
 
 }
+
+loadCategoryItem();
