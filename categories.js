@@ -84,10 +84,10 @@ const showCategoryByID = (data) => {
     const cardFoundNumber = document.getElementById("card");
     const length = data.data.length
     if (length > 0) {
-        cardFoundNumber.innerText = `${length} items found `;
+        cardFoundNumber.innerText = `${length} items found in this topic`;
     }
     else if (length === 0) {
-        cardFoundNumber.innerText = " No items found!";
+        cardFoundNumber.innerText = " No related items found!";
         Spiner(false);
     }
 
