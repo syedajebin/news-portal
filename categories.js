@@ -137,7 +137,7 @@ const showCategoryByID = (data) => {
                     </div>
                      <div class=" d-flex h-50 justify-content-center align-items-center" id="view-icon">
                     <p class="me-1"><i class="fa-regular fa-eye"></i></p>
-                    <p class="ms-1 fw-bold">${item.total_view ? item.total_view : "No User View"
+                    <p class="ms-1 fw-bold">${item.total_view ? item.total_view : "No user viewed yet"
             }</p>
                     </div>
                 </div>
