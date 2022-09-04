@@ -43,14 +43,14 @@ const displayCategoriesItem = (item) => {
 
 
 const Spiner = (Loading) => {
-    const loadSpinner = document.getElementById('loader');
+    const loadSpiner = document.getElementById('loader');
     if (Loading) {
-        loadSpinner.classList.remove('d-none');
+        loadSpiner.classList.remove('d-none');
 
     }
 
     else {
-        loadSpinner.classList.add('d-none');
+        loadSpiner.classList.add('d-none');
 
     }
 
