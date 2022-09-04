@@ -19,8 +19,19 @@
     height: 35px;
 }
 
+.fa-eye{
+    color: green;
+}
+.fa-star{
+    color: gold;
+}
+.fa-star-half-stroke{
+    color: gold;
+}
 
-
+/* .fa-arrow-right{
+    color:green;
+} */
 @media (max-width: 575.98px) {
     .card-images {
         width: 100% !important;

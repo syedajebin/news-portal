@@ -87,7 +87,7 @@ const showCategoryByID = (data) => {
         cardFoundNumber.innerText = `${length} items found `;
     }
     else if (length === 0) {
-        cardFoundNumber.innerText = "Sorry!! No Items Found!!!";
+        cardFoundNumber.innerText = " No items found!";
         Spiner(false);
     }
 
